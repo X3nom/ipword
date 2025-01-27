@@ -1,0 +1,2 @@
+# MANIFEST.in
+include ipword_tool/data/hex-word-dict.pickle

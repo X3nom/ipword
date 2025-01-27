@@ -1,7 +1,10 @@
+# Builds a pickle dictionary from 65536-words.csv for faster access
+# source of the wordlist is http://www.webplaces.org/passwords/lists/hexadecimal-65536-list.txt
+
 import pickle
 
 
-with open("65536-words.csv", "r") as f:
+with open("build-dictionary/65536-words.csv", "r") as f:
     content = f.readlines()
 
 
@@ -18,7 +21,7 @@ for line in content:
 
 PICKLE_PROTOCOL = pickle.HIGHEST_PROTOCOL
 
-with open("hex-word-dict.pickle", "wb") as f:
+with open("ipword_tool/data/hex-word-dict.pickle", "wb") as f:
     pickle.dump({
         "hex:word":hex_word,
         "word:hex":word_hex

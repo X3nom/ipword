@@ -7,7 +7,7 @@ import sys
 
 
 
-with importlib.resources.open_binary("ipword_tool", "hex-word-dict.pickle") as f:
+with importlib.resources.open_binary("ipword_tool.data", "hex-word-dict.pickle") as f:
     WORD_MAP :dict[str, dict[str,str]] = pickle.load(f)
 
 def printErr(msg) -> None: sys.stderr.write(msg+'\n')

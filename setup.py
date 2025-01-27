@@ -16,8 +16,9 @@ setup(
             "ipword=ipword_tool.ipword:main",  # Register the CLI tool
         ]
     },
+    # PACKAGE DATA HANDELED BY MANIFEST.in
     package_data={
-        "ipword-tool": ["hex-word-dict.pickle"],
+        "ipword-tool": [], # empty
     },
     include_package_data=True,
     description="Simple CLI tool for conversion of ipv6 addresses to more human-readable format",
