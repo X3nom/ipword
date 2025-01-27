@@ -3,9 +3,12 @@ import ipaddress
 import pickle
 import argparse
 import sys
+import os
+
+
 
 with open("hex-word-dict.pickle", "rb") as f:
-    WORD_MAP = pickle.load(f)
+    WORD_MAP :dict[str, dict[str,str]] = pickle.load(f)
 
 def printErr(msg) -> None: sys.stderr.write(msg+'\n')
 
