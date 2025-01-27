@@ -17,6 +17,11 @@ $ ipword cabal:auricle::mentum:afreet:jamboree
 2001:db8::8a2e:370:7334
 ```
 
+## Install
+```
+pip install https://github.com/X3nom/ipword/edit/main/README.md
+```
+
 
 
 ## Dictionary
