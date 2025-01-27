@@ -1,19 +1,24 @@
 from setuptools import setup, find_packages
 
+
+def load_requirements():
+    with open('requirements.txt') as f:
+        return f.read().splitlines()
+
+
 setup(
-    name="ipword-cli",
+    name="ipword-tool",
     version="0.1.0",
     packages=find_packages(),
-    install_requires=[],
+    install_requires=load_requirements(),
     entry_points={
         "console_scripts": [
-            "ipword=ipword.ipword:main",  # Register the CLI tool
+            "ipword=ipword_tool.ipword:main",  # Register the CLI tool
         ]
     },
     package_data={
-        "tool_src": ["hex-word-dict.pickle"],
+        "ipword-tool": ["hex-word-dict.pickle"],
     },
-    include_package_data=True, 
     include_package_data=True,
     description="Simple CLI tool for conversion of ipv6 addresses to more human-readable format",
     long_description=open("README.md").read(),

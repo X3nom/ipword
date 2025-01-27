@@ -2,12 +2,12 @@
 import ipaddress
 import pickle
 import argparse
+import importlib.resources
 import sys
-import os
 
 
 
-with open("hex-word-dict.pickle", "rb") as f:
+with importlib.resources.open_binary("ipword_tool", "hex-word-dict.pickle") as f:
     WORD_MAP :dict[str, dict[str,str]] = pickle.load(f)
 
 def printErr(msg) -> None: sys.stderr.write(msg+'\n')
@@ -73,9 +73,7 @@ def is_ip(ip :str) -> bool:
 
 
 
-
-
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(prog="ipword", description="Converts ipv6 addresses to more human friendly word representation and back.", epilog="github.com/X3nom/ipword")
     parser.add_argument(
         "ip_or_word",
@@ -92,3 +90,6 @@ if __name__ == "__main__":
     else:
         ip = word2ip(args.ip_or_word)
         print(ip)
+
+
+if __name__ == "__main__": main()
