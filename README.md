@@ -19,7 +19,7 @@ $ ipword cabal:auricle::mentum:afreet:jamboree
 
 ## Install
 ```
-pip install https://github.com/X3nom/ipword.git
+pip install git+https://github.com/X3nom/ipword.git
 ```
 
 
