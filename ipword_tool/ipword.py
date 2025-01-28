@@ -4,6 +4,7 @@ import pickle
 import argparse
 import importlib.resources
 import sys
+import re
 
 
 
@@ -14,11 +15,9 @@ def printErr(msg) -> None: sys.stderr.write(msg+'\n')
 
 
 def hex2word(hx :str) -> str:
-    if len(hx) > 4: raise Exception("Too long")
-    while len(hx) < 4:
-        hx = '0'+hx
-    hx = hx.lower()
-    word = WORD_MAP["hex:word"][hx]
+    hx_int = int(hx, 16)
+
+    word = WORD_MAP["hex:word"][hx_int]
     return word
 
 
@@ -39,6 +38,7 @@ def ip2word(ip :str) -> str:
     word = ipv6_2_words(ip)
     return word
 
+
 def word2ip(word :str) -> str:
     words_split = word.split(':')
 
@@ -48,7 +48,7 @@ def word2ip(word :str) -> str:
             ip_parts.append('')
         else:
             try:
-                hx = WORD_MAP["word:hex"][w]
+                hx = hex(WORD_MAP["word:hex"][w])[2:]
             except KeyError:
                 printErr(f"Error: '{w}' is not a valid word nor a part of a valid ip address")
                 exit(1)
@@ -82,14 +82,17 @@ def main():
     )
 
     args = parser.parse_args()
-    
-    if is_ip(args.ip_or_word):
-        word = ip2word(args.ip_or_word)
-        print(word)
+
+
+    address = args.ip_or_word
+
+    if is_ip(address):
+        out = ip2word(address)
 
     else:
-        ip = word2ip(args.ip_or_word)
-        print(ip)
+        out = word2ip(address)
 
+    print(out)
+    
 
 if __name__ == "__main__": main()
