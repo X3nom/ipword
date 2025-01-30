@@ -4,7 +4,7 @@
 import pickle
 
 
-with open("build-dictionary/65536-words.csv", "r") as f:
+with open("build-dictionary/words-hash-sorted.csv", "r") as f:
     content = f.readlines()
 
 
